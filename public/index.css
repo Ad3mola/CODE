@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Serif JP", serif;
+  background-color: rgb(247, 244, 244);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  border-bottom: 2px solid darkgray;
+}
+footer {
+  border-top: 2px solid darkgray;
+  padding: 1.2em;
+}
+.container {
+  width: 900px;
+  max-width: 98%;
+  margin: 0 auto;
+}
+.main-content {
+  flex: 1;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+}
+.brand {
+  letter-spacing: -5px;
+  font-size: 2rem;
+}
+.right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right a {
+  margin-right: 1.5em;
+}
+
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+button:focus {
+  outline: none;
+}
+
+#burger div {
+  width: 2rem;
+  height: 0.25rem;
+  background: black;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+  -webkit-transform-origin: 1px;
+  -ms-transform-origin: 1px;
+}
+#burger div:first-child {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+}
+
+#burger div:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+}
+
+#burger div:nth-child(3) {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+}
+#burger.changed div:nth-child(1) {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  width: 2rem;
+}
+#burger.changed div:nth-child(2) {
+  transform: translateX(20px);
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  opacity: 0;
+}
+#burger.changed div:nth-child(3) {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+}
+
+/* navigation menu */
+
+nav .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: rgb(247, 244, 244);
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -ms-transition: -ms-transform 0.3s ease-in-out;
+  overflow-y: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+}
+nav .menu::-webkit-scrollbar {
+  display: none;
+}
+nav .menu[transform] {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+}
+nav .menu[-webkit-transform] {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+}
+nav .menu[-ms-transform] {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+}
+.menu a {
+  margin: 2em 0;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.brand {
+  font-weight: 700;
+}
+
+footer p {
+  text-align: center;
+}
