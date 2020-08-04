@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <section class="container main-content">
+      <div class="main-wrapper">
+        <div class="blog-wrapper">
+          <div class="blog blog-detail">
+            <h1><%= blog.title %></h1>
+            <small><%= blog.createdAt %></small>
+            <p><%= blog.body %></p>
+          </div>
+          <div class="disqus-thread" id="disqus_thread"></div>
+        </div>
+        <div class="card-wrapper">
+          <div class="card">
+            <p><span>CODE</span> Articles on front-end development and more.</p>
+            <p>
+              All articles are written by <span> Ademola Madelewi</span>,
+              frontend developer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>All articles written by Ademola Madelewi</p>
+      </div>
+    </footer>
+
+    <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+      var disqus_config = function () {
+        this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function () {
+        // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://code-ya1uszotux.disqus.com/embed.js";
+        s.setAttribute("data-timestamp", +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+
+    <script async src="/index.js"></script>
+  </body>
+</html>

@@ -22,12 +22,66 @@ footer {
   padding: 1.2em;
 }
 .container {
-  width: 900px;
+  width: 1200px;
   max-width: 98%;
   margin: 0 auto;
 }
 .main-content {
   flex: 1;
+}
+.main-wrapper {
+  display: flex;
+}
+.blog-wrapper {
+  width: 68%;
+}
+.card-wrapper {
+  width: 28%;
+}
+.card {
+  border: 2px solid lightgray;
+  padding: 0.9em;
+  margin-top: 30%;
+  margin-left: 0.8em;
+}
+.card span {
+  font-weight: bold;
+}
+.card p:nth-child(2) {
+  margin-top: 2em;
+}
+
+.blog {
+  margin: 2em 0;
+  padding: 4em 0;
+  border-top: 2px solid lightgray;
+}
+.blog:nth-child(1) {
+  border-top: 0;
+}
+.blog-detail {
+  border-bottom: 2px solid lightgray;
+}
+.disqus-thread {
+  margin-top: 1em;
+}
+
+.blog a {
+  font-size: 2.3rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: black;
+}
+.blog p {
+  margin-top: 1.6em;
+}
+.truncate {
+  text-overflow: ellipsis;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .navbar {
   display: flex;
@@ -184,4 +238,23 @@ nav .menu[-ms-transform] {
 
 footer p {
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+  .blog-wrapper,
+  .card-wrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .card {
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+  .blog {
+    margin: 0;
+    padding: 3em 0;
+  }
 }

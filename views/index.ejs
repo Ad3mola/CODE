@@ -4,15 +4,26 @@
   <body>
     <%- include("../partials/header.ejs") %>
     <section class="container main-content">
-      <div>
+      <div class="main-wrapper">
+      <div class="blog-wrapper">
         <% if(blogs.length > 0){ %> <% blogs.map(blog => { %>
-        <h1><%= blog.title %></h1>
-        <p><%= blog.body %></p>
-        <small><%= blog.createdAt %></small>
-        <%}) %> <% } else { %>
-        <h2>No articles available...</h2>
+        <div class="blog">
+          <h1><a href= <%=`/blog-details/${blog.id}`%>><%= blog.title %></a></h1>
+          <small><%= blog.createdAt %></small>
+          <p class="truncate"><%= blog.body %></p>
+        </div>
+          <%}) %> <% } else { %>
+          <h2>No articles available...</h2>
+        
         <% } %>
       </div>
+      <div class="card-wrapper">
+        <div class="card">
+          <p><span>CODE</span> Articles on front-end development and more.</p>
+          <p>All articles are written by <span> Ademola Madelewi</span>, frontend developer.</p>
+        </div>
+      </div>
+    </div>
     </section>
     <footer>
       <div class="container">
