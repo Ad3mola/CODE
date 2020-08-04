@@ -61,7 +61,9 @@ app.get("/delete-blog/:id", (req, res) => {
 app.get("/saved-articles", (req, res) => {
   res.render("saved-articles", { title: "Saved Articles" });
 });
-
+app.get("/search", (req, res) => {
+  res.render("search", { title: "Search Articles" });
+});
 
 app.get("/blog-details/:id", (req, res) => {
   const { id } = req.params;

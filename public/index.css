@@ -32,11 +32,38 @@ footer {
 .main-wrapper {
   display: flex;
 }
-.blog-wrapper {
+.search-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+.search-label {
+  margin-bottom: 2.5em;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.search-input {
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  padding-left: 1em;
+  border: 1px solid lightgray;
+  margin-top: 2em;
+}
+.blog-wrapper,
+.form {
   width: 68%;
+}
+.form input {
+  display: block;
 }
 .card-wrapper {
   width: 28%;
+}
+.icons {
+  margin: 0.9em 0;
+}
+.icons a {
+  margin-right: 1em;
 }
 .card {
   border: 2px solid lightgray;
@@ -67,7 +94,7 @@ footer {
 }
 
 .blog a {
-  font-size: 2.3rem;
+  font-size: 1.7rem;
   font-weight: 900;
   text-decoration: none;
   color: black;
@@ -92,6 +119,9 @@ footer {
 .brand {
   letter-spacing: -5px;
   font-size: 2rem;
+}
+.brand a {
+  color: black;
 }
 .right {
   display: flex;
@@ -240,21 +270,33 @@ footer p {
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 567px) {
   .main-wrapper {
     flex-direction: column;
+    margin-top: 2em;
+  }
+  .form {
+    width: 90%;
+    margin-bottom: 4em;
+  }
+  .search-input {
+    width: 100%;
   }
   .blog-wrapper,
   .card-wrapper {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 2em auto;
   }
   .card {
     margin-top: 0;
     margin-bottom: 2em;
+    margin-left: 0;
+  }
+  .card-wrapper {
+    width: 90%;
   }
   .blog {
     margin: 0;
-    padding: 3em 0;
+    padding: 2em 1.7em;
   }
 }

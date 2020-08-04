@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <section class="container main-content">
+      <div class="main-wrapper search-wrapper">
+        <div class="form">
+          <form action="">
+            <div class="form-group">
+              <label for="#searchInput" class="search-label">Search</label>
+              <input
+                type="text"
+                aria-describedby="search input"
+                id="searchInput"
+                placeholder="what are you looking for?"
+                class="search-input"
+              />
+            </div>
+          </form>
+        </div>
+        <%- include("../partials/aboutCard.ejs") %>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>All articles written by Ademola Madelewi</p>
+      </div>
+    </footer>
+    <script async src="/index.js"></script>
+  </body>
+</html>
