@@ -7,7 +7,6 @@ const Blog = require("./models/blog");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-
 mongoose
   .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) =>
