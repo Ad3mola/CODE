@@ -22,13 +22,11 @@ mongoose
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  // res.render("index", {
-  //   blogs,
-  //   title: "Home",
-  // });
   Blog.find()
+    .sort({ createdAt: -1 })
     .then((result) =>
       res.render("index", {
         blogs: result,
@@ -36,15 +34,46 @@ app.get("/", (req, res) => {
       })
     )
     .catch((err) => console.log(err));
+  // res.render("index", {
+  //   blogs: [
+  //     {
+  //       id: 1,
+  //       title: "jbfihbvibrei vih erihirvb",
+  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+  //       createdAt: "thursday, aug 10, 2020",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "jbfihbvibrei vih erihirvb",
+  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+  //       createdAt: "thursday, aug 10, 2020",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "jbfihbvibrei vih erihirvb",
+  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+  //       createdAt: "thursday, aug 10, 2020",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "jbfihbvibrei vih erihirvb",
+  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+  //       createdAt: "thursday, aug 10, 2020",
+  //     },
+  //   ],
+  //   title: "Home",
+  // });
 });
 
-app.get("/add-blog", (req, res) => {
-  const blog = new Blog({
-    title: "Third Blog",
-    snippets: "this is my second node blog...",
-    body:
-      "this is amazing and I don't even have anymore text, now what do I do this is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I dothis is amazing and I don't even have anymore text, now what do I do ",
-  });
+app.get("/all-blogs", (req, res) => {
+  Blog.find()
+    .sort({ createdAt: -1 })
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+app.post("/add-blog", (req, res) => {
+  const blog = new Blog(req.body);
   blog
     .save()
     .then((result) => res.redirect("/"))
@@ -64,14 +93,17 @@ app.get("/saved-articles", (req, res) => {
 app.get("/search", (req, res) => {
   res.render("search", { title: "Search Articles" });
 });
+app.get("/add-blog", (req, res) => {
+  res.render("add-blog", { title: "Add Articles" });
+});
 
-app.get("/blog-details/:id", (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-  Blog.findById(id)
-    .then((result) =>
-      res.render("blog-details", { title: "Blog Details", blog: result })
-    )
+app.get("/blog-details/:title", (req, res) => {
+  const title = req.params.title.replace("-", " ");
+  Blog.find({ title })
+    .then((result) => {
+      res.render("blog-details", { title: "Blog Details", blog: result });
+      // res.json(result);
+    })
     .catch((err) => console.log(err));
 });
 

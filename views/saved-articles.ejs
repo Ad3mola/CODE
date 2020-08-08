@@ -3,7 +3,20 @@
   <%- include("../partials/head.ejs") %>
   <body>
     <%- include("../partials/header.ejs") %>
-    <h1>Saved</h1>
+    <section class="container main-content">
+      <div class="main-wrapper">
+      <div class="blog-wrapper">
+        
+      </div>
+     <%- include("../partials/aboutCard.ejs") %>
+    </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>All articles written by Ademola Madelewi</p>
+      </div>
+    </footer>
     <script async src="/index.js"></script>
+    <script async src="/retrieveArticles.js"></script>
   </body>
 </html>

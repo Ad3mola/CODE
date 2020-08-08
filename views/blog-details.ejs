@@ -8,9 +8,32 @@
       <div class="main-wrapper">
         <div class="blog-wrapper">
           <div class="blog blog-detail">
-            <h1><%= blog.title %></h1>
-            <small><%= blog.createdAt %></small>
-            <p><%= blog.body %></p>
+            <% blog.map(each => { %>
+            <h1>
+              <span><%= each.title %></span>
+
+              <span id="bookmark">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="bookmark"
+                  fill="none"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-bookmark"
+                >
+                  <path
+                    d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                  ></path></svg
+              ></span>
+            </h1>
+            <small><%= new Date(each.createdAt).toDateString() %></small>
+            <p><%= each.body %></p>
+            <%}) %>
           </div>
           <div class="disqus-thread" id="disqus_thread"></div>
         </div>
@@ -23,7 +46,7 @@
       </div>
     </footer>
 
-    <script>
+    <!-- <script>
       /**
        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
@@ -47,8 +70,9 @@
       <a href="https://disqus.com/?ref_noscript"
         >comments powered by Disqus.</a
       ></noscript
-    >
+    > -->
 
     <script async src="/index.js"></script>
+    <script async src="/bookmark.js"></script>
   </body>
 </html>

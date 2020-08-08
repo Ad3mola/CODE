@@ -7,18 +7,20 @@
     <section class="container main-content">
       <div class="main-wrapper search-wrapper">
         <div class="form">
-          <form action="">
+          <form id="form">
             <div class="form-group">
               <label for="#searchInput" class="search-label">Search</label>
               <input
-                type="text"
+                type="search"
                 aria-describedby="search input"
                 id="searchInput"
                 placeholder="what are you looking for?"
                 class="search-input"
               />
             </div>
+            <small class="error error-view">Please enter a search query</small>
           </form>
+          <div class="blog-result" id="blogResult"></div>
         </div>
         <%- include("../partials/aboutCard.ejs") %>
       </div>
@@ -29,5 +31,6 @@
       </div>
     </footer>
     <script async src="/index.js"></script>
+    <script src="/search.js"></script>
   </body>
 </html>

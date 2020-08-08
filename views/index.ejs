@@ -8,8 +8,8 @@
       <div class="blog-wrapper">
         <% if(blogs.length > 0){ %> <% blogs.map(blog => { %>
         <div class="blog">
-          <h1><a href= <%=`/blog-details/${blog.id}`%>><%= blog.title %></a></h1>
-          <small><%= blog.createdAt %></small>
+          <h1><a href= <%=`/blog-details/${blog.title.replace(" ", "-")}`%>><%= blog.title %></a></h1>
+          <small><%= new Date(blog.createdAt).toDateString() %></small>
           <p class="truncate"><%= blog.body %></p>
         </div>
           <%}) %> <% } else { %>
@@ -26,5 +26,6 @@
       </div>
     </footer>
     <script async src="/index.js"></script>
+   
   </body>
 </html>

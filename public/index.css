@@ -222,16 +222,15 @@ nav .menu {
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   height: 100vh;
-  width: 100%;
   text-align: center;
   padding: 2rem;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 1000;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.3s ease-in-out;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   -ms-transition: -ms-transform 0.3s ease-in-out;
   overflow-y: auto;
@@ -245,6 +244,8 @@ nav .menu[transform] {
   transform: translateX(0);
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
+  display: flex;
+  width: 100%;
 }
 nav .menu[-webkit-transform] {
   transform: translateX(0);
@@ -300,3 +301,9 @@ footer p {
     padding: 2em 1.7em;
   }
 }
+.error-view {
+  display: none;
+}
+/* .bookmark {
+  fill: black;
+} */
