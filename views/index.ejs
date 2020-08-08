@@ -8,7 +8,7 @@
       <div class="blog-wrapper">
         <% if(blogs.length > 0){ %> <% blogs.map(blog => { %>
         <div class="blog">
-          <h1><a href= <%=`/blog-details/${blog.title.replace(" ", "-")}`%>><%= blog.title %></a></h1>
+          <h1><a href= <%=`/blog-details/${blog.title.replace(/\s/g , "-")}`%>><%= blog.title %></a></h1>
           <small><%= new Date(blog.createdAt).toDateString() %></small>
           <p class="truncate"><%= blog.body %></p>
         </div>

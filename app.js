@@ -97,7 +97,8 @@ app.get("/add-blog", (req, res) => {
 });
 
 app.get("/blog-details/:title", (req, res) => {
-  const title = req.params.title.replace("-", " ");
+  const title = req.params.title.split("-").join(" ");
+  console.log(title);
   Blog.find({ title })
     .then((result) => {
       res.render("blog-details", { title: "Blog Details", blog: result });

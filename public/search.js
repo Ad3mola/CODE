@@ -24,7 +24,6 @@
 //   });
 // })();
 
-
 // const showBlogResult = (result) => {
 //   blogResult.innerHTML = "";
 
@@ -34,7 +33,7 @@
 //     } found</small>`;
 //     result.map((blog) => {
 //       blogResult.innerHTML += `<div>
-//       <h1><a href=${`/blog-details/${blog._id}`}>${
+//       <h1><a href=${`/blog-details/${blog.title.replace(" ", "-")}`}>${
 //         blog.title
 //       }</a></h1>
 //       <small>${new Date(blog.createdAt).toDateString()}</small>
@@ -45,4 +44,5 @@
 //     blogResult.innerHTML += "<h3>No Blogs available</h3>";
 //   }
 // };
-const searchInput=document.getElementById("searchInput");let blogResult=document.getElementById("blogResult");const form=document.getElementById("form");let value;const fetchRequest=(async()=>{let e=await fetch("/all-blogs"),t=await e.json();form.addEventListener("submit",e=>{if(e.preventDefault(),""===searchInput.value)blogResult.innerHTML="",document.querySelector(".error").classList.remove("error-view");else{document.querySelector(".error").classList.add("error-view"),value=searchInput.value.toLowerCase();const e=t.filter(e=>-1!==e.title.toLowerCase().indexOf(value)||-1!==e.body.toLowerCase().indexOf(value));showBlogResult(e)}})})(),showBlogResult=e=>{blogResult.innerHTML="",e.length?(blogResult.innerHTML+=`<small>${e.length} ${e.length>1?"posts were":"post was"} found</small>`,e.map(e=>{blogResult.innerHTML+=`<div>\n      <h1><a href=${`/blog-details/${e._id}`}>${e.title}</a></h1>\n      <small>${new Date(e.createdAt).toDateString()}</small>\n      <p class="truncate">${e.body}</p>\n     </div>`})):blogResult.innerHTML+="<h3>No Blogs available</h3>"};
+
+const searchInput=document.getElementById("searchInput");let blogResult=document.getElementById("blogResult");const form=document.getElementById("form");let value;const fetchRequest=(async()=>{let e=await fetch("/all-blogs"),t=await e.json();form.addEventListener("submit",e=>{if(e.preventDefault(),""===searchInput.value)blogResult.innerHTML="",document.querySelector(".error").classList.remove("error-view");else{document.querySelector(".error").classList.add("error-view"),value=searchInput.value.toLowerCase();const e=t.filter(e=>-1!==e.title.toLowerCase().indexOf(value)||-1!==e.body.toLowerCase().indexOf(value));showBlogResult(e)}})})(),showBlogResult=e=>{blogResult.innerHTML="",e.length?(blogResult.innerHTML+=`<small>${e.length} ${e.length>1?"posts were":"post was"} found</small>`,e.map(e=>{blogResult.innerHTML+=`<div>\n      <h1><a href=${`/blog-details/${e.title.replace(/\s/g , "-")}`}>${e.title}</a></h1>\n      <small>${new Date(e.createdAt).toDateString()}</small>\n      <p class="truncate">${e.body}</p>\n     </div>`})):blogResult.innerHTML+="<h3>No Blogs available</h3>"};
