@@ -1,67 +1,81 @@
 var exec = require("child_process").exec;
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+
 const keys = require("./config/keys");
 const Blog = require("./models/blog");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 mongoose
   .connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) =>
+  .then((result) => {
     app.listen(PORT, () =>
       // exec(`start chrome --kiosk http://localhost:${PORT}/`)
       console.log("app has started")
-    )
-  )
-  .catch((err) => console.log(err));
+    );
+  })
+  .catch((err) => {
+    console.log(err);
+    process.exit();
+  });
 
 //register view engine
 app.set("view engine", "ejs");
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+};
+
+app.use(cors(corsOptions));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  Blog.find()
-    .sort({ createdAt: -1 })
-    .then((result) =>
-      res.render("index", {
-        blogs: result,
-        title: "Home",
-      })
-    )
-    .catch((err) => console.log(err));
-  // res.render("index", {
-  //   blogs: [
-  //     {
-  //       id: 1,
-  //       title: "jbfihbvibrei vih erihirvb",
-  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
-  //       createdAt: "thursday, aug 10, 2020",
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "jbfihbvibrei vih erihirvb",
-  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
-  //       createdAt: "thursday, aug 10, 2020",
-  //     },
-  //     {
-  //       id: 3,
-  //       title: "jbfihbvibrei vih erihirvb",
-  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
-  //       createdAt: "thursday, aug 10, 2020",
-  //     },
-  //     {
-  //       id: 4,
-  //       title: "jbfihbvibrei vih erihirvb",
-  //       body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
-  //       createdAt: "thursday, aug 10, 2020",
-  //     },
-  //   ],
-  //   title: "Home",
-  // });
+  // Blog.find()
+  //   .sort({ createdAt: -1 })
+  //   .then((result) =>
+  //     res.render("index", {
+  //       blogs: result,
+  //       title: "Home",
+  //     })
+  //   )
+  //   .catch((err) => console.log(err));
+  res.render("index", {
+    blogs: [
+      {
+        id: 1,
+        title: "jbfihbvibrei vih erihirvb",
+        body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+        createdAt: "thursday, aug 10, 2020",
+      },
+      {
+        id: 2,
+        title: "jbfihbvibrei vih erihirvb",
+        body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+        createdAt: "thursday, aug 10, 2020",
+      },
+      {
+        id: 3,
+        title: "jbfihbvibrei vih erihirvb",
+        body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+        createdAt: "thursday, aug 10, 2020",
+      },
+      {
+        id: 4,
+        title: "jbfihbvibrei vih erihirvb",
+        body: "neijbfhbeibw icv iwhefibeibfiebfiurihfurbufbr",
+        createdAt: "thursday, aug 10, 2020",
+      },
+    ],
+    title: "Home",
+  });
 });
 
 app.get("/all-blogs", (req, res) => {
@@ -106,6 +120,8 @@ app.get("/blog-details/:title", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+app.use(authRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: "404 | Not Found" });

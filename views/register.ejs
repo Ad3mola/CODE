@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+  <body>
+    <%- include("../partials/header.ejs") %>
+        
+   <div>
+    <form id="form">
+      <div class="form-group">
+        <label for="#email" class="email-label">Email</label>
+        <input
+          type="email"
+          aria-describedby="email input"
+          name="email"
+          id="email"
+          placeholder="Email"
+          class="email-input"
+        />
+      </div>
+      <div class="form-group">
+        <label for="#password" class="password-label">Password</label>
+        <input
+          type="password"
+          aria-describedby="password input"
+          id="password"
+          name="password"
+          placeholder="Password"
+          class="password-input"
+        />
+      </div>
+      <div class="form-group">
+        <button>Submit</button>
+      </div>
+    </form>
+   </div>
+    </section>
+    <script async src="/index.js"></script>
+   <script>
+     let form = document.querySelector("form")
+    
+ 
+
+     form.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      let email = form.email.value
+     let password = form.password.value
+      console.log(email)
+      fetch("/register", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password 
+        }),
+        headers:{"Content-Type": "application/json"}
+      })
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+    })
+     
+   </script>
+  </body>
+</html>
